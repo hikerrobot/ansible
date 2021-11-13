@@ -1,0 +1,7 @@
+- name: copy_to_remote
+  hosts: 10.1.20.7
+  tasks:
+    - name:
+      ansible.builtin.copy:
+        src: copy_file_to_remote
+        dest: /home/hikerrobot/ansible_copy/
