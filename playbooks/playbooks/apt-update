@@ -1,7 +1,7 @@
 # nb. in order for this to work on a rasp pi
 # the user must be able to sudo.
 - name: os update
-  hosts: 10.1.10.5
+  hosts: 10.1.20.7
   become_user: root
   become: true
   tasks:

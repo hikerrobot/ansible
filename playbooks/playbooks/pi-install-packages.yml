@@ -1,0 +1,14 @@
+- name: pi setup
+  hosts: rasp_pis
+  become_user: root
+  become: true
+  tasks:
+    - name: install 
+      apt:
+        update_cache: true
+        pkg:
+        - vim
+        - git
+        - mosquitto
+        - mosquitto-clients
+        state: latest
