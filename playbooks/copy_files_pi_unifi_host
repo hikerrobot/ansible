@@ -1,0 +1,12 @@
+- name: copy_os_setup_files
+  hosts: 10.1.20.7
+  become_user: root
+  become: true
+  tasks:
+    - name: copy dhcpcd.conf
+      ansible.builtin.copy:
+        src: pi-files/pi_unifi_dhcpcd.conf
+        dest: /etc/dhcpcd.conf
+
+# remaining tasks
+# install unifi software
