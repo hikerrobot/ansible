@@ -1,4 +1,6 @@
 # based upon https://pimylifeup.com/rasberry-pi-unifi/
+# note that this has to be run against a 32bit rasp pi os...
+# as openjdk 8 is not available for 64bit rasp pi os. sad times.
 - name: pi unifi setup
   hosts: 10.1.10.36
   remote_user: pi
@@ -55,7 +57,3 @@
         pkg:
         - unifi
         state: latest
-
-
-        # echo "deb http://archive.raspbian.org/raspbian stretch main" | sudo tee /etc/apt/sources.list.d/stretch_mongodb.list
-
