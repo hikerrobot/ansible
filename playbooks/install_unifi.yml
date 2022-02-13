@@ -7,12 +7,12 @@
   tasks:
     - name: update apt
       apt:
-        update_cache: true
+        update_cache: yes
     # *** jdk only available on 32 bit os ***
     # unifi only supports java 8 when making this!!
     - name: install jdk 8 rng-tools
       apt:
-        update_cache: true
+        update_cache: yes
         pkg:
         - openjdk-8-jre-headless
         - rng-tools
@@ -27,12 +27,34 @@
       ansible.builtin.service:
         name: rng-tools
         state: restarted
-    # - name: replace file  /etc/apt/preferences.d/99stretch-mongodb.pref
-    #   ansible.builtin.copy:
-    #     src: pi-files/99stretch-mongodb.pref
-    #     dest:  /etc/apt/preferences.d/
-    # - name: replace content in /etc/default/rng-tools-debian
-    #   ansible.builtin.shell:
+    - name: create file /etc/apt/preferences.d/99stretch-mongodb.pref
+      ansible.builtin.copy:
+        src: pi-files/99stretch-mongodb.pref
+        dest:  /etc/apt/preferences.d/
+    - name: create content in file stretch_mongodb.list
+      ansible.builtin.copy:
+        content: 'deb http://archive.raspbian.org/raspbian stretch main'
+        dest: /etc/apt/sources.list.d/stretch_mongodb.list
+    - name: update apt
+      apt:
+        update_cache: yes
+    - name: create 100-ubnt-unifi.list
+      ansible.builtin.copy:
+        content: 'deb [signed-by=/usr/share/keyrings/ubiquiti-archive-keyring.gpg] https://www.ui.com/downloads/unifi/debian stable ubiquiti'
+        dest: /etc/apt/sources.list.d/100-ubnt-unifi.list
+    - name: create ubiquiti-archive-keyring.gpg
+      ansible.builtin.get_url:
+        url: https://dl.ui.com/unifi/unifi-repo.gpg
+        dest: /usr/share/keyrings/ubiquiti-archive-keyring.gpg
+    - name: update apt
+      apt:
+        update_cache: yes
+    - name: install unifi controller
+      apt:
+        update_cache: yes
+        pkg:
+        - unifi
+        state: latest
 
 
         # echo "deb http://archive.raspbian.org/raspbian stretch main" | sudo tee /etc/apt/sources.list.d/stretch_mongodb.list
