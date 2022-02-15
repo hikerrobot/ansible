@@ -19,10 +19,10 @@
         - openjdk-8-jre-headless
         - rng-tools
         state: latest
-    # nb. file name differs from expected, which was /etc/default/rng-tools-debian 
-    - name: replace content in /etc/default/rng-tools
+    # nb. file name may differ in /etc/default/. rng-tools-debian or rng-tools 
+    - name: replace content in /etc/default/rng-tools-debian
       ansible.builtin.replace:
-        path: /etc/default/rng-tools
+        path: /etc/default/rng-tools-debian
         regexp: '#HRNGDEVICE=\/dev\/hwrng'
         replace: 'HRNGDEVICE=\/dev/hwrng\/'
     - name: restart service rng-tools
