@@ -57,3 +57,35 @@
         pkg:
         - unifi
         state: latest
+
+# steps taken from web page
+#--------------------------
+# sudo apt update
+# sudo apt upgrade -y
+# sudo apt install openjdk-8-jre-headless
+# sudo apt install rng-tools
+
+# sudo nano /etc/default/rng-tools-debian
+# #uncomment: (use sed to do this in script)
+# #HRNGDEVICE=/dev/hwrng
+# sudo systemctl restart rng-tools
+
+# sudo nano /etc/apt/preferences.d/99stretch-mongodb.pref
+
+# # add lines:
+# #Never Prefer packages from Stretch
+# Package: *
+# Pin: release n=stretch
+# Pin-Priority: 1
+
+# echo "deb http://archive.raspbian.org/raspbian stretch main" | sudo tee /etc/apt/sources.list.d/stretch_mongodb.list
+
+# sudo apt update
+
+# echo 'deb [signed-by=/usr/share/keyrings/ubiquiti-archive-keyring.gpg] https://www.ui.com/downloads/unifi/debian stable ubiquiti' | sudo tee /etc/apt/sources.list.d/100-ubnt-unifi.list
+
+# curl https://dl.ui.com/unifi/unifi-repo.gpg | sudo tee /usr/share/keyrings/ubiquiti-archive-keyring.gpg >/dev/null
+
+# sudo apt update
+
+# sudo apt install unifi
