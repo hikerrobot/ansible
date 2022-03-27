@@ -1,0 +1,13 @@
+- hosts: 10.1.10.37 
+  remote_user: pi
+  become_user: root
+  become: true
+  vars:
+    pip_package: python3-pip
+    docker_version: latest
+    docker_install_recommends: true
+    docker_users:
+      - pi
+  roles:
+    - geerlingguy.pip
+    - geerlingguy.docker_arm
