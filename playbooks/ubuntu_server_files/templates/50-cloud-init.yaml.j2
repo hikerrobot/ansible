@@ -1,0 +1,11 @@
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    eth0:
+      dhcp4: no
+      addresses:
+        - "{{ new_host_ip }}/24"
+      gateway4: "{{ gateway_ip }}"
+      nameservers:
+          addresses: "[{{ gateway_ip }}, 8.8.8.8]"

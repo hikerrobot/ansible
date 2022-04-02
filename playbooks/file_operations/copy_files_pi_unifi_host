@@ -9,5 +9,3 @@
         dest: /etc/dhcpcd.conf
 
 # ip address not being set. check content of dhcpcd.conf being copied
-# remaining tasks
-# install unifi software
