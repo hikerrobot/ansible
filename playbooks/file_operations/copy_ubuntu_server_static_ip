@@ -1,14 +1,14 @@
 - name: copy_static_ip_setup_files
   hosts: "{{ host_ip }}"
-  become_user: root
+  # become_user: root
   become: true
   tasks:
     - name: copy 99-disable-network-config.cfg
       ansible.builtin.copy:
-        src: ubuntu_server_files/99-disable-network-config.cfg
+        src: playbooks/ubuntu_server_files/99-disable-network-config.cfg
         # dest: /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg
         dest: /tmp/99.cfg
-    -name: copy cloud init file
+    - name: copy cloud init file
       ansible.builtin.template:
         src: ubuntu_server_files/templates/50-cloud-init.yaml.j2
         # dest: /etc/netplan/50-cloud-init.yaml
