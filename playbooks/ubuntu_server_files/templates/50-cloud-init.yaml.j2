@@ -8,4 +8,4 @@ network:
         - "{{ new_host_ip }}/24"
       gateway4: "{{ gateway_ip }}"
       nameservers:
-          addresses: "[{{ gateway_ip }}, 8.8.8.8]"
+          addresses: [{{ gateway_ip }}, 8.8.8.8]
