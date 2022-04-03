@@ -1,5 +1,5 @@
 - name: add static ip to /etc/dhcpcd.conf
-  hosts: 10.1.10.36
+  hosts: {{ host_ip }}
   remote_user: pi
   become_user: root
   become: true
@@ -12,6 +12,6 @@
         block: |
             another line
             interface eth0
-            static ip_address={{ ip_address }}/24
+            static ip_address={{ new_host_ip }}/24
             static routers={{ static_router }}
             static domain_name_servers={{ static_router }} 8.8.8.8

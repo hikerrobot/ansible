@@ -1,4 +1,4 @@
-- hosts: 10.1.10.37 
+- hosts: {{ host_ip }}
   remote_user: pi
   become_user: root
   become: true
