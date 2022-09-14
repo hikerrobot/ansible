@@ -1,0 +1,4 @@
+- name: copy_to_remote
+  ansible.builtin.copy:
+    src: mosquitto.conf
+    dest: /var/tmp/
