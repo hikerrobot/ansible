@@ -1,15 +1,6 @@
 - name: debian setup
-  hosts: 
+  hosts: localhost
   become_user: root
   become: true
-  tasks:
-    - name: install 
-      apt:
-        update_cache: true
-        pkg:
-        - sshpass
-        - vim
-        - git
-        - mosquitto
-        - mosquitto-clients
-        state: latest
+  roles:
+    - role: pi_install_binaries

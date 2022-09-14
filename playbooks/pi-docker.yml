@@ -1,5 +1,5 @@
 - hosts: {{ host_ip }}
-  remote_user: pi
+  remote_user: rob
   become_user: root
   become: true
   vars:

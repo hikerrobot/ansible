@@ -1,0 +1,10 @@
+- name: install 
+  apt:
+    update_cache: true
+    pkg:
+    - sshpass
+    - vim
+    - git
+    - mosquitto
+    - mosquitto-clients
+    state: latest
