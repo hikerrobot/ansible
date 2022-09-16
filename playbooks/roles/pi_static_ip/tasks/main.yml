@@ -1,0 +1,11 @@
+- name: add block
+  ansible.builtin.blockinfile:
+    create: no
+    path: /etc/dhcpcd.conf
+    backup: yes
+    block: |
+        another line
+        interface eth0
+        static ip_address={{ new_host_ip }}/24
+        static routers={{ static_router }}
+        static domain_name_servers={{ static_router }} 8.8.8.8
