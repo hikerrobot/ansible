@@ -1,0 +1,5 @@
+# only to be installed on ansible host e.g. pi4
+- name: install ansible-galaxy roles
+  hosts: localhost
+  roles:
+    - role: install-ansible-roles
