@@ -1,0 +1,8 @@
+- name: clone some of me repos!
+  hosts: localhost
+  roles:
+    - role: git_clone
+      vars:
+        repo_dest: "{{ home }}/workspace/ansible"
+        repo_path: git@github.com:hikerrobot/ansible.git
+        

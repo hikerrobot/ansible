@@ -43,4 +43,4 @@
 ## db-[99:101]-node.example.com
 rasp_pis:
   hosts:
-    10.1.10.39
+    10.1.10.37
