@@ -1,6 +1,0 @@
-- name: debian setup
-  hosts: localhost
-  become_user: root
-  become: true
-  roles:
-    - role: pi_install_binaries

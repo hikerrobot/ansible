@@ -1,0 +1,11 @@
+# need to install ansible and register ssh key before running
+- name: setup pi4
+  hosts: localhost
+  roles:
+    - role: apt_update
+    - role: install-ansible-roles
+    - role: git_clone
+      vars:
+        repo_dest: "{{ home }}/workspace/ansible"
+        repo_path: git@github.com:hikerrobot/ansible.git
+    - role: pi_install_binaries

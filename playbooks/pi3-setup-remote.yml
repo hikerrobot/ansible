@@ -1,0 +1,5 @@
+- name: setup pi 3 remotely
+  hosts:
+# unifi controller via docker
+  roles:
+    -role:

@@ -1,13 +1,8 @@
 # nb. in order for this to work on a rasp pi
-# the user must be able to sudo.
+# the remote_user must be able to sudo.
 - name: os update
   hosts: 10.1.10.36
-  remote_user: pi
+  remote_user: rob
   become_user: root
-  become: true
-  tasks:
-    - name: update apt
-      apt:
-        # update_cache: true
-        cache_valid_time: 3600
-        upgrade: full
+  roles:
+    - role: apt_update
