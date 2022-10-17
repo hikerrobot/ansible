@@ -1,5 +1,12 @@
 - name: setup pi 3 remotely
-  hosts:
-# unifi controller via docker
-  roles:
-    -role:
+  hosts: 10.1.10.37
+  tasks:
+# todo need to copy or checkout files on remote host
+# docker file is in other repo - private_setup
+#  file was manually transferred
+#  need to set SERVER_IP var in playbook *OR* simplify
+    - name: docker deploy remote
+      community.docker.docker_compose:
+        project_src: /home/rob/
+        state: present
+        files: docker-compose-phole-unifi-nginx.yml
