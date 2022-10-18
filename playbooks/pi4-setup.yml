@@ -1,0 +1,12 @@
+# need to install ansible and register ssh key before running
+- name: setup pi4
+  hosts: localhost
+  roles:
+    - role: apt_update
+    - role: install_docker_arm
+    - role: git_clone
+      vars:
+        home: "{{ lookup('ansible.builtin.env', 'HOME') }}"
+        repo_dest: "{{ home }}/workspace/ansible"
+        repo_path: git@github.com:hikerrobot/ansible.git
+    - role: install_binaries_debian
