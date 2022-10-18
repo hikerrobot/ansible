@@ -1,0 +1,6 @@
+---
+# vars file for git_clone
+
+home: "{{ lookup('ansible.builtin.env', 'HOME') }}"
+# repo_path: "git@github.com:hikerrobot/ansible.git"
+# repo_dest: your_target_repo_directory

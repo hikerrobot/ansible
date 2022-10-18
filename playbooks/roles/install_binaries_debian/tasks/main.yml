@@ -1,0 +1,11 @@
+- name: install linux useful binaries
+  apt:
+    update_cache: true
+    pkg:
+    - sshpass
+    - vim
+    - git
+    - mosquitto
+    - mosquitto-clients
+    state: latest
+  become: yes

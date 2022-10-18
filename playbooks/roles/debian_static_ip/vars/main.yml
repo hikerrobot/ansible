@@ -1,0 +1,4 @@
+---
+# vars file for pi_static_ip
+new_host_ip:
+static_router:

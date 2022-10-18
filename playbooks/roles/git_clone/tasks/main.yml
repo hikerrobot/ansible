@@ -1,0 +1,7 @@
+---
+# tasks file for git_clone
+
+- name: clone git repo
+  ansible.builtin.git:
+    repo: "{{ repo_path }}"
+    dest: "{{ repo_dest }}"
