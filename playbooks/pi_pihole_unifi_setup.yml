@@ -1,0 +1,21 @@
+# copy docker file
+# check if docker file exist
+# install docker
+- name: install unifi controller and pihole
+  hosts: "{{ dest_pi_server }}"
+  vars:
+    home: "{{ lookup('ansible.builtin.env', 'HOME') }}"
+    docker_file_name: docker-compose-unifi-pihole.yml
+    src_docker_file: "docker_files/{{ docker_file_name }}"
+    dest_docker_file: "{{ home }}/{{ docker_file_name }}"
+  tasks:
+    - name: copy docker-compose file
+      ansible.builtin.copy:
+        src: "{{ src_docker_file }}"
+        dest: "{{ dest_docker_file }}"
+    - name: docker deploy remote
+      community.docker.docker_compose:
+        project_src: "{{ home }}"
+        state: present
+        files: "{{ docker_file_name }}"
+        
