@@ -1,0 +1,24 @@
+---
+# tasks file for install_archive
+- name: check if archive exists
+  stat:
+    path: "/var/tmp/{{ archive_file }}"
+  register: archive_exists
+- name: download archive
+  ansible.builtin.get_url:
+    url: "{{ download_url }}"
+    dest: /var/tmp
+  when: not archive_exists.stat.exists
+- name: check if archive extracted
+  stat:
+    path: "{{ extract_dir }}"
+  register: dir_exists
+- name: check if extract_dir exists
+  ansible.builtin.file:
+    state: directory
+    path: "{{ extract_dir }}"
+- name: extract archive
+  ansible.builtin.unarchive:
+    src: "/var/tmp/{{ archive_file }}"
+    dest: "{{ extract_dir }}"
+  when: not dir_exists.stat.exists
