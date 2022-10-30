@@ -1,0 +1,11 @@
+---
+# tasks file for go_system_remove
+- name: remove go shell env script
+  ansible.builtin.file:
+    state: absent
+    path: "/etc/profile.d/go.sh"
+  become: yes
+- name: remove go install directory
+  ansible.builtin.file:
+    state: absent
+    path: "{{ extract_dir }}"

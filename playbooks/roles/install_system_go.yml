@@ -1,0 +1,14 @@
+- hosts: localhost
+  vars:
+    home_dir: "{{ lookup('ansible.builtin.env', 'HOME') }}"
+    go_path_dir: "{{ home_dir }}/go"
+    go_version: go1.19
+    # is this the correct arc for a rasp pi?
+    archive_file: "{{ go_version }}.linux-amd64.tar.gz"
+    extract_parent_dir: "/usr/share/applications"
+    extract_dir: "{{ extract_parent_dir }}/{{ go_version }}"
+    download_url: "https://go.dev.dl/{{ archive_file }}"
+
+  roles:
+    - install_archive
+    - go_system_setup

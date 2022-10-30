@@ -1,0 +1,27 @@
+---
+# tasks file for go_user_setup
+- name: define GOPATH in .bash_profile
+  lineinfile:
+    # create: yes
+    path: "{{ home_dir }}/.bash_profile"
+    state: present
+    regexp: "^export GOPATH={{ extract_parent_dir }}"
+    line: "export GOPATH={{ extract_parent_dir }}"
+  become: yes
+- name: add GOPATH to PATH in .bash_profile
+  lineinfile:
+    path: "{{ home_dir }}/.bash_profile"
+    state: present
+    regexp: PATH=.*GOPATH
+    line: "export PATH=$PATH:$GOPATH"
+- name: define GOROOT in .bash_profile
+  lineinfile:
+    path: "{{ home_dir }}/.bash_profile"
+    regexp: "^export GOROOT={{ extract_dir }}"
+    line: "export GOROOT={{ extract_dir }}"
+- name: add GOPATH to PATH in .bash_profile
+  lineinfile:
+    path: "{{ home_dir }}/.bash_profile"
+    state: present
+    regexp: PATH=.*GOPATH/bin
+    line: "export PATH=$PATH:$GOROOT/bin"

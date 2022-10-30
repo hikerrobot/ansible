@@ -1,0 +1,9 @@
+- hosts: localhost
+
+  vars:
+    go_version: go1.18.4
+    extract_parent_dir: "/usr/share/applications"
+    extract_dir: "{{ extract_parent_dir }}/{{ go_version }}"
+
+  roles:
+    - remove_go_system

@@ -1,0 +1,20 @@
+---
+# tasks file for go_system_setup
+- name: create go_path_dir
+  ansible.builtin.file:
+    state: directory
+    path: "{{ go_path_dir }}"
+    mode: '0777'
+- name: define GOROOT in shell script
+  lineinfile:
+    create: yes
+    path: "/etc/profile.d/go.sh"
+    regexp: "^export GOROOT={{ extract_dir }}/go"
+    line: "export GOROOT={{ extract_dir }}/go"
+  become: yes
+- name: add GOROOT to PATH in shell script
+  lineinfile:
+    path: "/etc/profile.d/go.sh"
+    state: present
+    regexp: PATH=.*GOROOT/bin
+    line: "export PATH=$PATH:$GOROOT/bin"
