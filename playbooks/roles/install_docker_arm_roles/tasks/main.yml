@@ -1,0 +1,10 @@
+# note that ansible_galaxy_install only makes the role available on the host.
+# it does not install docker to the host.
+- name: Install geerlingguy.pip
+  community.general.ansible_galaxy_install:
+    type: role
+    name: geerlingguy.pip
+- name: Install geerlingguy.docker_arm
+  community.general.ansible_galaxy_install:
+    type: role
+    name: geerlingguy.docker_arm

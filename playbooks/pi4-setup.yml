@@ -3,5 +3,5 @@
   hosts: localhost
   roles:
     - role: apt_update
-    - role: install_docker_arm
+    - role: install_docker_arm_roles
     - role: install_binaries_debian

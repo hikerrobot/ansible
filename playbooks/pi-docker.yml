@@ -1,0 +1,11 @@
+- hosts: "{{ host_ip }}"
+  become: true # required to add the docker group for a user
+  vars:
+    # pip_package: python3-pip
+    docker_version: latest
+    docker_install_recommends: false
+    docker_users:
+      - "{{ docker_user }}"
+  roles:
+    - geerlingguy.pip
+    - geerlingguy.docker_arm
