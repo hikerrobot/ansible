@@ -6,4 +6,4 @@
     extract_dir: "{{ extract_parent_dir }}/{{ go_version }}"
 
   roles:
-    - remove_go_system
+    - remove_go_system 
