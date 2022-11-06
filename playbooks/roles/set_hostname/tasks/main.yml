@@ -1,3 +1,6 @@
+# nb. does not update entry in /etc/hosts
+# if this causes issues then add entry here to update hosts file
 - name: set hostname
+  become: true
   ansible.builtin.hostname:
     name: "{{ hostname }}"
