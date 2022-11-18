@@ -1,0 +1,30 @@
+# create password file with creds, before running
+# TODO
+#   improve playbook by checking for existence of creds file
+#   put creds file in var so can be reused
+#   create nsa ip var
+
+- name: mount nas dev directory
+  hosts: {{  dest_pi }}
+  become: true
+  vars:
+    home: "{{ lookup('ansible.builtin.env', 'HOME') }}"
+  tasks:
+    - name: check for presence of mount directory
+      ansible.builtin.stat:
+        path: /mnt/dev
+      register: mnt_stat
+    - name: create mount directory
+      ansible.builtin.file:
+        path: /mnt/dev/
+        state: directory
+        owner: root
+        group: root
+      when: ! mnt_stat.stat.exists
+    - name: setup nas dev mount
+      ansible.posix.mount:
+        src: //10.1.10.2/dev
+        path: /mnt/dev
+        fstype: cifs
+        opts: credentials={{ home }}/rob_nas_creds,iocharset=utf8,file_mode=0777,dir_mode=0777,uid=1000,gid=1000
+        state: mounted
