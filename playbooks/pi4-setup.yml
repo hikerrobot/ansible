@@ -6,6 +6,7 @@
     - role: install-ansible-roles
     - role: git_clone
       vars:
+        home: "{{ lookup('ansible.builtin.env', 'HOME') }}"
         repo_dest: "{{ home }}/workspace/ansible"
         repo_path: git@github.com:hikerrobot/ansible.git
     - role: pi_install_binaries
