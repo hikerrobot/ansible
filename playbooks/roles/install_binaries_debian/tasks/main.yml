@@ -8,4 +8,5 @@
     - git
     - mosquitto
     - mosquitto-clients
+    - python3-pip
     state: latest

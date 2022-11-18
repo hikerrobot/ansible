@@ -7,3 +7,6 @@
         hostname: pi-zero
     - role: apt_update
     - role: install_binaries_debian
+    - role: use_builtin.pip
+      vars:
+        module: wakeonlan

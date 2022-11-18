@@ -1,0 +1,5 @@
+---
+# tasks file for use_builtin.pip
+- name: install module using pip
+  ansible.builtin.pip:
+    name: "{{ module }}"
