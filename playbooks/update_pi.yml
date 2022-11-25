@@ -1,0 +1,5 @@
+# need to install ansible and register ssh key before running
+- name: update pi
+  hosts: localhost
+  roles:
+    - role: apt_update
