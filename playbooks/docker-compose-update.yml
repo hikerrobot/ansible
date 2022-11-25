@@ -1,0 +1,12 @@
+---
+- name: 
+  hosts: localhost
+  tasks:
+    - name: stop docker containers
+      community.docker.docker_compose:
+        project_src: "{{ compose-file-dir }}"
+        state: absent
+      community.docker.docker_compose:
+        project_src: "{{ compose-file-dir }}"
+        pull: true
+        state: present
