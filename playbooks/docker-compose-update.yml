@@ -1,5 +1,5 @@
 ---
-- name: 
+- name: docker compose image update 
   hosts: localhost
   tasks:
     - name: stop docker containers
@@ -7,6 +7,7 @@
         project_src: "{{ compose-file-dir }}"
         state: absent
       community.docker.docker_compose:
+        files: "{{ docker-compose-files }}"
         project_src: "{{ compose-file-dir }}"
         pull: true
         state: present
