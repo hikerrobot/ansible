@@ -1,6 +1,10 @@
 # copy docker file
 # check if docker file exist
 # install docker
+#-------------------
+# TODO consider working directory, as files being stored in repo dir when
+# started on localhost
+#-------------------
 - name: install unifi controller and pihole
   hosts: "{{ dest_pi_server }}"
   vars:

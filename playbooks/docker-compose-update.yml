@@ -1,12 +1,16 @@
 ---
-- name: 
+- name: docker compose update
   hosts: localhost
   tasks:
     - name: stop docker containers
+    # TODO not working as containers have been copied to home dir
+    # before starting. has to be stopped from same file
+    # should only affect localhost. add condition?
       community.docker.docker_compose:
-        project_src: "{{ compose-file-dir }}"
+        project_src: "{{ compose_file_dir }}"
+        files: docker-compose-unifi-pihole.yml
         state: absent
-      community.docker.docker_compose:
-        project_src: "{{ compose-file-dir }}"
-        pull: true
-        state: present
+      # community.docker.docker_compose:
+      #   project_src: "{{ compose-file-dir }}"
+      #   pull: true
+      #   state: present

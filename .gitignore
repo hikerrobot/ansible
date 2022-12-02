@@ -1,1 +1,2 @@
 hosts
+playbooks/docker_files/*
