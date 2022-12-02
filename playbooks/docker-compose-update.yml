@@ -10,7 +10,8 @@
         project_src: "{{ compose_file_dir }}"
         files: docker-compose-unifi-pihole.yml
         state: absent
-      # community.docker.docker_compose:
-      #   project_src: "{{ compose-file-dir }}"
-      #   pull: true
-      #   state: present
+      community.docker.docker_compose:
+        files: "{{ docker-compose-files }}"
+        project_src: "{{ compose-file-dir }}"
+        pull: true
+        state: present
