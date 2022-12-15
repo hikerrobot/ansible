@@ -1,0 +1,6 @@
+---
+# tasks file for git-setup
+- name: copy ssh git config
+  ansible.builtin.template:
+    src: gitconfig.j2
+    dest: "{{ home_dir }}/.ssh/config"

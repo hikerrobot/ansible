@@ -1,0 +1,6 @@
+- name: create git config
+  hosts: localhost
+  vars:
+    home_dir: "{{ lookup('ansible.builtin.env', 'HOME') }}"
+  roles:
+    - role: git-setup
