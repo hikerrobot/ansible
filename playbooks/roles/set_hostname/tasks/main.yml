@@ -2,5 +2,6 @@
 # if this causes issues then add entry here to update hosts file
 - name: set hostname
   become: true
+  tags: [ always ]
   ansible.builtin.hostname:
     name: "{{ hostname }}"

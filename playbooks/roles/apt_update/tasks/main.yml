@@ -2,9 +2,9 @@
 # tasks file for apt_update
 - name: apt upgrade
   become: true
+  tags: [ always ]
   ansible.builtin.apt:
     autoremove: true
-  ansible.builtin.apt:
     clean: true
     update_cache: true
     cache_valid_time: 3600

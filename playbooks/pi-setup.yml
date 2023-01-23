@@ -1,0 +1,15 @@
+# need to install ansible and register ssh key before running
+# nb. need to set hostname var for set_hostname role
+# recognised tags, pi0|pi4
+- name: setup pi
+  hosts: "{{ pi_ip }}"
+  roles:
+    - role: set_hostname
+    - role: apt_update
+    - role: install_binaries_debian
+    - role: use_builtin.pip
+      vars:
+        module: wakeonlan
+      tags: [ never, pi0 ]
+    - role: install_docker_arm_roles
+      tags: [ never, pi4 ]
