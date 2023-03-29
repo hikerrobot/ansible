@@ -2,7 +2,6 @@
 # tasks file for apt_update
 - name: apt upgrade
   become: true
-  tags: [ always ]
   ansible.builtin.apt:
     autoremove: true
     clean: true

@@ -1,6 +1,5 @@
 - name: install linux useful binaries
   become: true
-  tags: [ always ]
   apt:
     update_cache: true
     pkg:

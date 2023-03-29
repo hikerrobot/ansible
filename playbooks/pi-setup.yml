@@ -5,11 +5,16 @@
   hosts: "{{ pi_ip }}"
   roles:
     - role: set_hostname
+      tags: [ firstrun ]
     - role: apt_update
+      tags: [ firstrun, update ]
     - role: install_binaries_debian
+      tags: [ firstrun ]
     - role: use_builtin.pip
       vars:
         module: wakeonlan
-      tags: [ never, pi0 ]
+      tags: [ never, pi0, wakeonlan ]
     - role: install_docker_arm_roles
-      tags: [ never, pi4 ]
+      tags: [ never, docker_arm, pi4 ]
+    - role: nvm
+      tags: [ firstrun, nvm ]
