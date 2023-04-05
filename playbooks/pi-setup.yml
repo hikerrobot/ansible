@@ -10,6 +10,8 @@
       tags: [ firstrun, update ]
     - role: install_binaries_debian
       tags: [ firstrun ]
+    - role: debian_dev_setup
+      tags: [ pi4, devsetup ]
     - role: use_builtin.pip
       vars:
         module: wakeonlan

@@ -1,0 +1,10 @@
+---
+# tasks file for debian_dev_setup
+
+- name: install developer binaries
+  become: true
+  apt:
+    update_cache: true
+    pkg:
+    - maven
+    state: latest
