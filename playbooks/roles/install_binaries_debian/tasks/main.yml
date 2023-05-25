@@ -1,6 +1,6 @@
 - name: install linux useful binaries
   become: true
-  apt:
+  ansible.builtin.apt:
     update_cache: true
     pkg:
     - sshpass
@@ -10,3 +10,8 @@
     - mosquitto-clients
     - python3-pip
     state: latest
+
+- name: install minikube deb
+  become: true
+  ansible.builtin.apt:
+    deb: https://storage.googleapis.com/minikube/releases/latest/minikube_latest_arm64.deb

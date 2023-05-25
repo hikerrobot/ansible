@@ -5,11 +5,11 @@
   hosts: "{{ pi_ip }}"
   roles:
     - role: set_hostname
-      tags: [ firstrun ]
+      tags: [ firstrun, hostname ]
     - role: apt_update
       tags: [ firstrun, update ]
     - role: install_binaries_debian
-      tags: [ firstrun ]
+      tags: [ firstrun, binaries ]
     - role: debian_dev_setup
       tags: [ pi4, devsetup ]
     - role: use_builtin.pip
