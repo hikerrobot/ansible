@@ -8,4 +8,4 @@
       - "{{ docker_user }}"
   roles:
     - geerlingguy.pip
-    - geerlingguy.docker_arm
+    - geerlingguy.docker
